@@ -32,7 +32,6 @@ import cn.ac.lz233.tarnhelm.ui.main.PlaceHolderActivity
 import cn.ac.lz233.tarnhelm.ui.rules.RulesActivity
 import cn.ac.lz233.tarnhelm.ui.settings.SettingsActivity
 import cn.ac.lz233.tarnhelm.util.LogUtil
-import cn.ac.lz233.tarnhelm.xposed.Config
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.color.DynamicColorsOptions
 
@@ -43,8 +42,6 @@ class App : Application() {
         lateinit var sp: SharedPreferences
         lateinit var editor: SharedPreferences.Editor
         lateinit var spSettings: SharedPreferences
-        var spXposed: SharedPreferences? = null
-        var editorXposed: SharedPreferences.Editor? = null
 
         lateinit var db: AppDatabase
         lateinit var parameterRuleDao: ParameterRuleDao
@@ -69,9 +66,6 @@ class App : Application() {
 
         @JvmStatic
         fun isBackgroundMonitoringActive() = SettingsDao.workModeBackgroundMonitoring
-
-        @JvmStatic
-        fun isXposedActive(): Boolean = false
     }
 
     override fun onCreate() {
@@ -81,10 +75,6 @@ class App : Application() {
         context = applicationContext
         sp = context.getSharedPreferences(BuildConfig.APPLICATION_ID, MODE_PRIVATE)
         spSettings = PreferenceManager.getDefaultSharedPreferences(context)
-        runCatching {
-            spXposed = context.getSharedPreferences("${BuildConfig.APPLICATION_ID}_xposed", MODE_WORLD_READABLE)
-            editorXposed = spXposed?.edit()
-        }
         editor = sp.edit()
 
         db = Room.databaseBuilder(context, AppDatabase::class.java, "tarnhelm").allowMainThreadQueries().build()
@@ -97,14 +87,6 @@ class App : Application() {
         activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
         notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-
-
-        if (isXposedActive()) context.startService(
-            Intent().apply {
-                `package` = Config.packageName
-                action = "cn.ac.lz233.tarnhelm.bridge"
-            }
-        )
 
         createSplitConfig()
 

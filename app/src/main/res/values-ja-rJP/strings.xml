@@ -23,7 +23,6 @@
     <string name="mainStatusWorkModeCopyMenu">コピーメニュー</string>
     <string name="mainStatusWorkModeShare">共有ダイアログ</string>
     <string name="mainStatusBackgroundMonitoring">バックグラウンドでモリタニング</string>
-    <string name="mainStatusWorkModeXposed">Xposed</string>
     <string name="mainRulesTitle">ルール</string>
     <string name="mainRulesSummary">%s ルール</string>
     <string name="mainExtensionsTitle">Extensions (WIP)</string>
@@ -86,13 +85,6 @@
     <string name="settingsWorkModeShareSummary">共有ダイアログで「Tarnhelm」を選択できます</string>
     <string name="settingsWorkModeBackgroundMonitoring">バックグラウンドでモリタニング</string>
     <string name="settingsWorkModeBackgroundMonitoringSummary">バックグラウンドでのクリップボードの内容のリアルタイム処理します</string>
-    <string name="settingsWorkModeXposed">Xposed</string>
-    <string name="settingsWorkModeXposedSummary">クリップボードを変更するためにシステムフレームワークをフックする必要があります</string>
-    <string name="settingsWorkModeOpenLSPosedToast">LSPosedで有効化し、端末を再起動して変更できます。</string>
-    <string name="settingsWorkModeRecommendationToast">「Background Monitoring」と「Xposed」のうちの1つを選んで有効にすることをお勧めします。</string>
-    <string name="settingsXposedTitle">Xposed</string>
-    <string name="settingsXposedRewriteClipboard">クリップボード書き換え</string>
-    <string name="settingsXposedOverrideClipboardOverlay">クリップボードオーバーレイを上書きする</string>
     <string name="settingsBehavior">動作設定</string>
     <string name="settingsBehaviorExportRulesAsLink">ルールをリンクとしてエクスポート</string>
     <string name="settingsBehaviorExportRulesAsLinkSummary">エクスポートされたルールの真ん前に「tarnhelm://」を追加</string>

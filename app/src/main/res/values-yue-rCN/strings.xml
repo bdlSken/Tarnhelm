@@ -20,7 +20,6 @@
     <string name="mainStatusWorkModeCopyMenu">复制菜单</string>
     <string name="mainStatusWorkModeShare">分享对话框</string>
     <string name="mainStatusBackgroundMonitoring">后台监听</string>
-    <string name="mainStatusWorkModeXposed">Xposed</string>
     <string name="mainRulesTitle">规则库</string>
     <string name="mainRulesSummary">已经记录咗 %s 条规则</string>
     <string name="mainExtensionsTitle">扩展（WIP)</string>
@@ -80,9 +79,6 @@
     <string name="settingsWorkModeCopyMenu">复制菜单</string>
     <string name="settingsWorkModeShare">分享对话框</string>
     <string name="settingsWorkModeBackgroundMonitoring">后台监听</string>
-    <string name="settingsWorkModeXposed">Xposed</string>
-    <string name="settingsWorkModeOpenLSPosedToast">喺 LSPosed 入面激活然后重启嚟切换开关</string>
-    <string name="settingsWorkModeRecommendationToast">推荐净喺係打开「后台监听」或「Xposed」嘅其中一个</string>
     <string name="settingsBehavior">行为</string>
     <string name="settingsBehaviorExportRulesAsLink">以链接形式导出规则</string>
     <string name="settingsOthersTitle">其他</string>

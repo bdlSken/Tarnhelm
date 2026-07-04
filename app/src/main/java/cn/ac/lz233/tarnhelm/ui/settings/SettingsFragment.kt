@@ -12,7 +12,6 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.core.view.updatePadding
 import androidx.preference.Preference
-import androidx.preference.PreferenceCategory
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.TwoStatePreference
 import androidx.recyclerview.widget.RecyclerView
@@ -48,10 +47,6 @@ class SettingsFragment() : PreferenceFragmentCompat() {
         val workModeCopyMenu: TwoStatePreference = findPreference("workModeCopyMenu")!!
         val workModeShare: TwoStatePreference = findPreference("workModeShare")!!
         val workModeBackgroundMonitoring: TwoStatePreference = findPreference("workModeBackgroundMonitoring")!!
-        val workModeXposed: TwoStatePreference = findPreference("workModeXposed")!!
-        val xposed: PreferenceCategory = findPreference("xposed")!!
-        val rewriteClipboard: TwoStatePreference = findPreference("rewriteClipboard")!!
-        val overrideClipboardOverlay: TwoStatePreference = findPreference("overrideClipboardOverlay")!!
         val alwaysSendProcessingNotification: TwoStatePreference = findPreference("alwaysSendProcessingNotification")!!
         val systemNotificationSettings: Preference = findPreference("systemNotificationSettings")!!
         val exportRulesAsLink: TwoStatePreference = findPreference("exportRulesAsLink")!!
@@ -127,26 +122,6 @@ class SettingsFragment() : PreferenceFragmentCompat() {
             }
         }
 
-        workModeXposed.isChecked = App.isXposedActive()
-        workModeXposed.setOnPreferenceChangeListener { preference, newValue ->
-            if (!workModeXposed.isChecked) Snackbar.make(rootView, R.string.settingsWorkModeOpenLSPosedToast, Toast.LENGTH_SHORT).show()
-            false
-        }
-
-        xposed.isVisible = workModeXposed.isChecked
-
-        rewriteClipboard.setOnPreferenceChangeListener { preference, newValue ->
-            App.editorXposed?.putBoolean("rewriteClipboard", newValue as Boolean)?.apply()
-            true
-        }
-
-        // Clipboard overlay is a feature introduced in Android 13
-        overrideClipboardOverlay.isVisible = Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-        overrideClipboardOverlay.setOnPreferenceChangeListener { preference, newValue ->
-            App.editorXposed?.putBoolean("overrideClipboardOverlay", newValue as Boolean)?.apply()
-            true
-        }
-
         systemNotificationSettings.setOnPreferenceClickListener {
             startActivity(
                 Intent().apply {
@@ -195,9 +170,6 @@ class SettingsFragment() : PreferenceFragmentCompat() {
             PackageManager.DONT_KILL_APP
         )
         App.context.startForegroundService(Intent(App.context, ClipboardService::class.java))
-        val workModeXposed: TwoStatePreference = findPreference("workModeXposed")!!
-        if (workModeXposed.isChecked)
-            Snackbar.make(rootView, R.string.settingsWorkModeRecommendationToast, Toast.LENGTH_SHORT).show()
     }
 
     private fun deactivateClipboardService() {

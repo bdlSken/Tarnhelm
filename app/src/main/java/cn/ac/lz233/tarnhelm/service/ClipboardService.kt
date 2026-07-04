@@ -113,7 +113,7 @@ class ClipboardService : Service() {
         handler.post {
             val windowManager = getSystemService(WindowManager::class.java) as WindowManager
             val view = View(applicationContext)
-            windowManager.addView(view, WindowManager.LayoutParams(-2, -2, 2038, 32, -3).apply {
+            windowManager.addView(view, WindowManager.LayoutParams(-2, -2, WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY, WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE, -3).apply {
                 x = 0
                 y = 0
                 width = 0

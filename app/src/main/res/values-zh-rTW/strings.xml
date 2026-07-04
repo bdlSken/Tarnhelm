@@ -24,7 +24,6 @@
     <string name="mainStatusWorkModeCopyMenu">複製選單</string>
     <string name="mainStatusWorkModeShare">分享對話方塊</string>
     <string name="mainStatusBackgroundMonitoring">後臺監聽</string>
-    <string name="mainStatusWorkModeXposed">Xposed</string>
     <string name="mainRulesTitle">規則庫</string>
     <string name="mainRulesSummary">已記錄 %s 個規則</string>
     <string name="mainExtensionsTitle">外掛（WIP）</string>
@@ -90,13 +89,6 @@
     <string name="settingsWorkModeBackgroundMonitoring">後臺監聽</string>
     <string name="settingsWorkModeBackgroundMonitoringSummary">在後臺即時處理剪貼簿內容</string>
     <string name="settingsWorkModeBackgroundMonitoringToast">後台監聽需要 Shizuku 權限</string>
-    <string name="settingsWorkModeXposed">Xposed</string>
-    <string name="settingsWorkModeOpenLSPosedToast">在 LSPosed 中啟用並重啟來修改</string>
-    <string name="settingsWorkModeRecommendationToast">推薦只打開「後臺監聽」或「Xposed」的其中一個</string>
-    <string name="settingsXposedTitle">Xposed</string>
-    <string name="settingsWorkModeXposedSummary">Hook 系統框架以修改剪貼簿</string>
-    <string name="settingsXposedRewriteClipboard">重寫剪貼簿</string>
-    <string name="settingsXposedOverrideClipboardOverlay">覆寫剪貼簿懸浮窗</string>
     <string name="settingsNotification">通知</string>
     <string name="settingsNotificationAlwaysSendProcessingNotification">始終發送處理通知</string>
     <string name="settingsNotificationAlwaysSendProcessingNotificationSummary">即使這不涉及到耗時操作</string>

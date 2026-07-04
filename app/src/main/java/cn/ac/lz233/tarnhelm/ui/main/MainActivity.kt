@@ -41,7 +41,6 @@ class MainActivity : BaseActivity() {
             if (App.isCopyMenuActive()) add(R.string.mainStatusWorkModeCopyMenu.getString())
             if (App.isShareActive()) add(R.string.mainStatusWorkModeShare.getString())
             if (App.isBackgroundMonitoringActive()) add(R.string.mainStatusBackgroundMonitoring.getString())
-            if (App.isXposedActive()) add(R.string.mainStatusWorkModeXposed.getString())
         }
 
     override fun onCreate(savedInstanceState: Bundle?) {
