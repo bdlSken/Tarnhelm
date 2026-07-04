@@ -30,7 +30,7 @@ class ExtensionsActivity : SecondaryBaseActivity() {
     private val onExtInstallExceptionHandler = CoroutineExceptionHandler { _, exception ->
         val message = when (exception) {
             is InvalidExtensionException -> exception.message ?: R.string.extensionsInstallFailedToast.getString()
-            else -> R.string.extensionsInstallFailedToast.getString()
+            else -> exception.message ?: R.string.extensionsInstallFailedToast.getString()
         }
         Snackbar.make(binding.root, message, Toast.LENGTH_LONG).show()
     }
@@ -40,9 +40,7 @@ class ExtensionsActivity : SecondaryBaseActivity() {
             val fileUri = result.data?.data ?: return@registerForActivityResult
             contentResolver.openInputStream(fileUri)?.let { stream ->
                 launch(onExtInstallExceptionHandler) {
-                    ExtensionManager.installExtension(stream)
-                    Snackbar.make(binding.root, R.string.extensionsInstallSuccessToast, Toast.LENGTH_SHORT).show()
-                    refreshList()
+                    installFromStream(stream)
                 }
             }
         }
@@ -63,14 +61,7 @@ class ExtensionsActivity : SecondaryBaseActivity() {
         }
 
         binding.importFab.setOnClickListener { startImport() }
-        binding.importFab.setOnLongClickListener {
-            launch(onExtInstallExceptionHandler) {
-                assets.open("extensions/example.dex").use { ExtensionManager.installExtension(it) }
-                Snackbar.make(binding.root, R.string.extensionsInstallSuccessToast, Toast.LENGTH_SHORT).show()
-                refreshList()
-            }
-            true
-        }
+        binding.sampleButton.setOnClickListener { installSampleExtension() }
     }
 
     override fun onResume() {
@@ -78,9 +69,23 @@ class ExtensionsActivity : SecondaryBaseActivity() {
         refreshList()
     }
 
+    private suspend fun installFromStream(stream: java.io.InputStream) {
+        ExtensionManager.installExtension(stream)
+        Snackbar.make(binding.root, R.string.extensionsInstallSuccessToast, Toast.LENGTH_SHORT).show()
+        refreshList()
+    }
+
+    private fun installSampleExtension() {
+        launch(onExtInstallExceptionHandler) {
+            assets.open("extensions/example.dex").use { installFromStream(it) }
+        }
+    }
+
     private fun refreshList() {
         adapter.refresh(ExtensionManager.getInstalledExtensions())
-        binding.extensionsRecyclerView.visibility = if (extensions.isEmpty()) View.GONE else View.VISIBLE
+        val empty = extensions.isEmpty()
+        binding.emptyLayout.visibility = if (empty) View.VISIBLE else View.GONE
+        binding.extensionsRecyclerView.visibility = if (empty) View.GONE else View.VISIBLE
     }
 
     private fun startImport() {

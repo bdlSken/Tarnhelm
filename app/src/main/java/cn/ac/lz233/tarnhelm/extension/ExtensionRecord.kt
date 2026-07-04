@@ -37,8 +37,9 @@ data class ExtensionRecord(
     companion object {
         const val ENTRY_CLASS_NAME = "TarnhelmExt"
 
-        fun fromExtInfo(extInfo: ExtInfo): ExtensionRecord {
+        fun fromExtInfo(extInfo: ExtInfo, entryClassName: String = ENTRY_CLASS_NAME): ExtensionRecord {
             return ExtensionRecord(
+                entryClassName = entryClassName,
                 id = extInfo.id(),
                 author = extInfo.author(),
                 name = extInfo.name(),

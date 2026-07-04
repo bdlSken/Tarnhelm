@@ -83,6 +83,8 @@
     <string name="extensionsItemAuthor">Author</string>
     <string name="extensionsInstallSuccessToast">Extension installed</string>
     <string name="extensionsInstallFailedToast">Failed to install extension</string>
+    <string name="extensionsEmpty">No extensions installed yet. Import a .dex file or install the bundled sample.</string>
+    <string name="extensionsInstallSample">Install sample extension</string>
     <string name="extensionsUninstall">Uninstall</string>
     <string name="extensionsCheckUpdate">Website</string>
     <string name="extensionsImportSampleHint">Long-press Import to install the bundled sample extension</string>
