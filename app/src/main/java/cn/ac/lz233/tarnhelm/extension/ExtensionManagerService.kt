@@ -58,11 +58,13 @@ class ExtensionManagerService(private val context: Context) {
             stopExtension(extensionRecord)
             extensionRecordStorage.remove(extensionRecord.id)
         }
-        extensionRecordStorage.add(extensionRecord)
-        Log.d("ExtensionManager", "Extension (id:${extensionRecord.id}) registered")
-        Log.d("ExtensionManager", "Current installed extension: ${extensionRecordStorage.getAll().size}")
-        val service = createExtensionService(extensionRecord)
-        thread { runCatching { service.onExtInstall() } }
+        val enabled = extensionRecord.copy(enabled = true)
+        extensionRecordStorage.add(enabled)
+        Log.d("ExtensionManager", "Extension (id:${enabled.id}) registered")
+        startExtension(enabled)
+        runningExtMap[enabled]?.let { service ->
+            thread { runCatching { service.onExtInstall() } }
+        }
     }
 
     private fun loadExtension(extensionRecord: ExtensionRecord) = MemoryDexLoader.createClassLoaderWithDex(Files.readAllBytes(Path(extensionRecord.getExtPath(context) + "ext.dex")), extensionClassLoaderParent)
@@ -70,7 +72,7 @@ class ExtensionManagerService(private val context: Context) {
     private fun createExtensionService(extensionRecord: ExtensionRecord) : ExtService {
         val extClassLoader = loadExtension(extensionRecord)
         val entryClazz = extClassLoader.loadClass(extensionRecord.entryClassName)
-        val extObj = entryClazz.newInstance() as ITarnhelmExt
+        val extObj = entryClazz.getDeclaredConstructor().newInstance() as ITarnhelmExt
         return createExtensionServiceMethod.invoke(extObj, object : ExtContext {
             private val ownSP = ExtensionOwnStorage(extensionRecord.getExtPath(context))
             override fun tarnhelmSdkVersion(): Int = EXT_SDK_VERSION

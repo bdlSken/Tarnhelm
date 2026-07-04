@@ -8,6 +8,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.text.HtmlCompat
 import cn.ac.lz233.tarnhelm.App
 import cn.ac.lz233.tarnhelm.R
+import cn.ac.lz233.tarnhelm.extension.ExtensionManager
 import cn.ac.lz233.tarnhelm.logic.dao.SettingsDao
 import cn.ac.lz233.tarnhelm.util.LogUtil
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -118,6 +119,11 @@ fun String.doTarnhelm(): Triple<CharSequence, Boolean, List<String>> {
         }
     }
     if (targetRules.isEmpty()) result = this
+    val (extResult, extNames) = ExtensionManager.applyExtensions(result.toString())
+    if (extNames.isNotEmpty()) {
+        targetRules.addAll(extNames.map { "[${R.string.extensionsTitle.getString()}]$it" })
+        result = extResult
+    }
     LogUtil._d("Result: $result")
     LogUtil._d("TargetRules: $targetRules")
     return Triple(result, hasTimeConsumingOperation, targetRules)
