@@ -14,6 +14,7 @@ import cn.ac.lz233.tarnhelm.BuildConfig
 import cn.ac.lz233.tarnhelm.R
 import cn.ac.lz233.tarnhelm.databinding.ActivityMainBinding
 import cn.ac.lz233.tarnhelm.databinding.DialogAboutBinding
+import cn.ac.lz233.tarnhelm.extension.ExtensionManager
 import cn.ac.lz233.tarnhelm.logic.dao.ConfigDao
 import cn.ac.lz233.tarnhelm.logic.dao.SettingsDao
 import cn.ac.lz233.tarnhelm.service.ClipboardService
@@ -94,6 +95,7 @@ class MainActivity : BaseActivity() {
                     getString(R.string.mainStatusPassSummary, workModeList.toString(R.string.mainStatusPunctuation.getString(), R.string.mainStatusPunctuationLast.getString()))
             }
             binding.rulesSummaryTextView.text = getString(R.string.mainRulesSummary, (App.regexRuleDao.getCount() + App.parameterRuleDao.getCount() + App.redirectRuleDao.getCount()).toString())
+            binding.extensionsSummaryTextView.text = getString(R.string.mainExtensionsSummary, ExtensionManager.getInstalledExtensions().size.toString())
         }
         if (SettingsDao.workModeBackgroundMonitoring) startForegroundService(Intent(App.context, ClipboardService::class.java))
     }
