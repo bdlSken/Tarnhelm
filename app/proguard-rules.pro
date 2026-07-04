@@ -20,12 +20,6 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
--keep public class cn.ac.lz233.tarnhelm.xposed.XposedEntry
-
--keep class cn.ac.lz233.tarnhelm.App$Companion {
-    isXposedActive();
-}
-
 -assumenosideeffects class cn.ac.lz233.tarnhelm.util.LogUtil {
  public static void _d*(...);
 }

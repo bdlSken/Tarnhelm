@@ -24,7 +24,6 @@
     <string name="mainStatusWorkModeCopyMenu">Меню копирования</string>
     <string name="mainStatusWorkModeShare">Диалоговое окно общего доступа</string>
     <string name="mainStatusBackgroundMonitoring">Фоновый мониторинг</string>
-    <string name="mainStatusWorkModeXposed">Xposed</string>
     <string name="mainRulesTitle">Правила</string>
     <string name="mainRulesSummary">%s правил записано</string>
     <string name="mainExtensionsTitle">Расширения</string>
@@ -94,13 +93,6 @@
     <string name="settingsWorkModeBackgroundMonitoring">Фоновый мониторинг</string>
     <string name="settingsWorkModeBackgroundMonitoringSummary">Обрабатывать содержимое в фоновом режиме в реальном времени</string>
     <string name="settingsWorkModeBackgroundMonitoringToast">Требуется разрешение Shizuku</string>
-    <string name="settingsWorkModeXposed">Xposed</string>
-    <string name="settingsWorkModeXposedSummary">Фреймворк для изменения буфера обмена</string>
-    <string name="settingsWorkModeOpenLSPosedToast">Активировать в LSPosed и перезагрузить для изменения</string>
-    <string name="settingsWorkModeRecommendationToast">Рекомендуется включить только один фонового мониторинга или Xposed</string>
-    <string name="settingsXposedTitle">Xposed</string>
-    <string name="settingsXposedRewriteClipboard">Перезаписать буфер обмена</string>
-    <string name="settingsXposedOverrideClipboardOverlay">Переопределить наложение буфера обмена</string>
     <string name="settingsNotification">Уведомление</string>
     <string name="settingsNotificationAlwaysSendProcessingNotification">Всегда отправлять уведомления об обработке</string>
     <string name="settingsNotificationAlwaysSendProcessingNotificationSummary">Даже если не задействованы длительные по времени операции</string>

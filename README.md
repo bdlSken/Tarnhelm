@@ -15,6 +15,4 @@
 
 从 F-Droid 获取：https://f-droid.org/packages/cn.ac.lz233.tarnhelm
 
-从 LSPosed Repository 获取：https://github.com/Xposed-Modules-Repo/cn.ac.lz233.tarnhelm
-
 [![Star History Chart](https://api.star-history.com/svg?repos=lz233/Tarnhelm&type=Date)](https://star-history.com/#lz233/Tarnhelm&Date)

@@ -24,7 +24,6 @@
     <string name="mainStatusWorkModeCopyMenu">Copy Menu</string>
     <string name="mainStatusWorkModeShare">Sharing Dialog</string>
     <string name="mainStatusBackgroundMonitoring">Background Monitoring</string>
-    <string name="mainStatusWorkModeXposed">Xposed</string>
     <string name="mainRulesTitle">Rules</string>
     <string name="mainRulesSummary">%s rule(s) recorded</string>
     <string name="mainExtensionsTitle">Extensions (WIP)</string>
@@ -94,13 +93,6 @@
     <string name="settingsWorkModeBackgroundMonitoring">Background Monitoring</string>
     <string name="settingsWorkModeBackgroundMonitoringSummary">Process contents in background real time</string>
     <string name="settingsWorkModeBackgroundMonitoringToast">Shizuku permission is needed</string>
-    <string name="settingsWorkModeXposed">Xposed</string>
-    <string name="settingsWorkModeXposedSummary">Hook framework to modify clipboard</string>
-    <string name="settingsWorkModeOpenLSPosedToast">Activate in LSPosed and reboot to modify</string>
-    <string name="settingsWorkModeRecommendationToast">Recommend to only enable one of Background Monitoring or Xposed</string>
-    <string name="settingsXposedTitle">Xposed</string>
-    <string name="settingsXposedRewriteClipboard">Rewrite clipboard</string>
-    <string name="settingsXposedOverrideClipboardOverlay">Override clipboard overlay</string>
     <string name="settingsNotification">Notification</string>
     <string name="settingsNotificationAlwaysSendProcessingNotification">Always send processing notifications</string>
     <string name="settingsNotificationAlwaysSendProcessingNotificationSummary">Even if no time-consuming operations involved</string>

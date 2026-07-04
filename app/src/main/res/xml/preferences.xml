@@ -24,25 +24,6 @@
             android:key="workModeBackgroundMonitoring"
             android:summary="@string/settingsWorkModeBackgroundMonitoringSummary"
             android:title="@string/settingsWorkModeBackgroundMonitoring" />
-
-        <rikka.material.preference.MaterialSwitchPreference
-            android:key="workModeXposed"
-            android:summary="@string/settingsWorkModeXposedSummary"
-            android:title="@string/settingsWorkModeXposed" />
-    </PreferenceCategory>
-
-    <PreferenceCategory
-        android:key="xposed"
-        android:title="@string/settingsXposedTitle">
-
-        <rikka.material.preference.MaterialSwitchPreference
-            android:defaultValue="true"
-            android:key="rewriteClipboard"
-            android:title="@string/settingsXposedRewriteClipboard" />
-
-        <rikka.material.preference.MaterialSwitchPreference
-            android:key="overrideClipboardOverlay"
-            android:title="@string/settingsXposedOverrideClipboardOverlay" />
     </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/settingsNotification">

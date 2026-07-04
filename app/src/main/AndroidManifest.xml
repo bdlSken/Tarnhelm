@@ -36,7 +36,6 @@
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
             </intent-filter>
             <meta-data
                 android:name="android.app.shortcuts"
@@ -169,19 +168,6 @@
         </receiver>
 
         <service
-            android:name=".service.ModuleDataBridgeService"
-            android:enabled="true"
-            android:exported="true"
-            android:foregroundServiceType="specialUse">
-            <intent-filter>
-                <action android:name="cn.ac.lz233.tarnhelm.bridge" />
-            </intent-filter>
-            <property
-                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
-                android:value="Send module data to app. It will be called by system via Xposed." />
-        </service>
-
-        <service
             android:name=".service.ClipboardService"
             android:enabled="false"
             android:exported="false"
@@ -208,16 +194,6 @@
             android:exported="true"
             android:multiprocess="false"
             android:permission="android.permission.INTERACT_ACROSS_USERS_FULL" />
-
-        <meta-data
-            android:name="xposeddescription"
-            android:value="@string/app_description" />
-        <meta-data
-            android:name="xposedminversion"
-            android:value="93" />
-        <meta-data
-            android:name="xposedscope"
-            android:resource="@array/xposed_scope" />
 
         <property
             android:name="android.window.PROPERTY_ACTIVITY_EMBEDDING_ALLOW_SYSTEM_OVERRIDE"

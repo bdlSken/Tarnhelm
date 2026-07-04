@@ -23,23 +23,24 @@ class ClipboardShizukuService(private val context: Context) : IClipboardShizukuS
     }
 
     override fun destroy() {
-        // LogUtil._d("ClipboardShizukuService destroy")
         Refine.unsafeCast<AppOpsManagerHidden>(appOpsManager).stopWatchingNoted(opNotedListener)
     }
 
     @RequiresApi(Build.VERSION_CODES.Q)
     override fun start() {
         HiddenApiBypass.addHiddenApiExemptions("Landroid/app");
-        // LogUtil._d("ClipboardShizukuService init")
         appOpsManager = context.getSystemService(Context.APP_OPS_SERVICE) as AppOpsManager
         packageManager = context.packageManager
         // DO NOT convert it to lambda due to R8 will break it down
         opNotedListener = object : AppOpsManagerHidden.OnOpNotedListener {
             override fun onOpNoted(op: String?, uid: Int, packageName: String?, attributionTag: String?, flags: Int, result: Int) {
-                shizukuCallback.onOpNoted(op, uid, packageName, attributionTag, flags, result)
+                notifyOpNoted(op, uid, packageName, attributionTag, flags, result)
+            }
+
+            override fun onOpNoted(op: String?, uid: Int, packageName: String?, attributionTag: String?, virtualDeviceId: Int, flags: Int, result: Int) {
+                notifyOpNoted(op, uid, packageName, attributionTag, flags, result)
             }
         }
-        // Allow self to draw floating window
         Refine.unsafeCast<AppOpsManagerHidden>(appOpsManager)
             .setMode(
                 AppOpsManager.OPSTR_SYSTEM_ALERT_WINDOW,
@@ -47,12 +48,15 @@ class ClipboardShizukuService(private val context: Context) : IClipboardShizukuS
                 BuildConfig.APPLICATION_ID,
                 AppOpsManager.MODE_ALLOWED
             )
-        // Register AppOps Note listener
         Refine.unsafeCast<AppOpsManagerHidden>(appOpsManager)
             .startWatchingNoted(intArrayOf(30), opNotedListener)
     }
 
     override fun addCallback(shizukuCallback: ShizukuCallback) {
         this.shizukuCallback = shizukuCallback
+    }
+
+    private fun notifyOpNoted(op: String?, uid: Int, packageName: String?, attributionTag: String?, flags: Int, result: Int) {
+        shizukuCallback.onOpNoted(op, uid, packageName, attributionTag, flags, result)
     }
 }
