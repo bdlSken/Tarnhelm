@@ -1,5 +1,3 @@
-package cn.ac.lz233.tarnhelm.ext.example;
-
 import android.content.Context;
 import android.view.View;
 import android.widget.TextView;

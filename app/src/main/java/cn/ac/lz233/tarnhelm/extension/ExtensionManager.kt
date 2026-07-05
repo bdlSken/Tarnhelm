@@ -74,7 +74,7 @@ object ExtensionManager {
 
     private fun findExtensionInfo(classLoader: ClassLoader): ITarnhelmExt.ExtInfo? {
         try {
-            val realEntry = classLoader.loadClass(ExtensionRecord.ENTRY_CLASS_NAME).getDeclaredConstructor().newInstance()
+            val realEntry = ExtensionRecord.loadEntryClass(classLoader).getDeclaredConstructor().newInstance()
             return (realEntry as ITarnhelmExt).extensionInfo()
         } catch (e: Exception) {
             throw InvalidExtensionException("Loading invalid extension", e)
