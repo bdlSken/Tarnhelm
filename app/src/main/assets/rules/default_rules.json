@@ -1,0 +1,651 @@
+{
+  "parameter": [
+    {
+      "a": "Apple Music",
+      "e": "music.apple.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "mitian233"
+    },
+    {
+      "a": "百度贴吧",
+      "e": "tieba.baidu.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "哔哩哔哩动态分享",
+      "e": "t.bilibili.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "会员购分享",
+      "e": "mall.bilibili.com",
+      "f": 0,
+      "g": [
+        "noTitleBar",
+        "itemsId"
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "个人界面分享",
+      "e": "space.bilibili.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "直播预约分享",
+      "e": "www.bilibili.com",
+      "f": 1,
+      "g": [
+        "i_transfer_match"
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "哔哩哔哩直播间",
+      "e": "live.bilibili.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "Disney+",
+      "e": "www.disneyplus.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "mitian233"
+    },
+    {
+      "a": "DLsite",
+      "e": "www.dlsite.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "MateChan"
+    },
+    {
+      "a": "恩山无线论坛",
+      "e": "www.right.com.cn",
+      "f": 1,
+      "g": [
+        "authorid",
+        "extra"
+      ],
+      "d": "ous50 "
+    },
+    {
+      "a": "Google Search",
+      "e": "www.google.com",
+      "f": 0,
+      "g": [
+        "q"
+      ],
+      "d": "MateChan"
+    },
+    {
+      "a": "即刻动态",
+      "e": "m.okjike.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "TCOTC"
+    },
+    {
+      "a": "Netflix",
+      "e": "www.netflix.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "mitian233"
+    },
+    {
+      "a": "h5 QQ 空间",
+      "e": "h5.qzone.qq.com",
+      "f": 0,
+      "g": [
+        "sharetag",
+        "appid"
+      ],
+      "d": "PRO-2684"
+    },
+    {
+      "a": "QQ 频道",
+      "e": "qun.qq.com",
+      "f": 0,
+      "g": [
+        "inviteCode"
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "全民k歌",
+      "e": "static-play.kg.qq.com",
+      "f": 0,
+      "g": [
+        "s"
+      ],
+      "d": "青墨"
+    },
+    {
+      "a": "Reddit",
+      "e": "www.reddit.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "Dreista"
+    },
+    {
+      "a": "Spotify",
+      "e": "open.spotify.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "淘宝/闲鱼",
+      "e": "m.tb.cn",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "腾讯视频",
+      "e": "m.v.qq.com",
+      "f": 0,
+      "g": [
+        "vid"
+      ],
+      "d": "returnL、青墨"
+    },
+    {
+      "a": "Tiktok",
+      "e": "www.tiktok.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "Mattis"
+    },
+    {
+      "a": "微信读书",
+      "e": "weread.qq.com",
+      "f": 0,
+      "g": [
+        "v"
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "微信公众号文章",
+      "e": "mp.weixin.qq.com",
+      "f": 0,
+      "g": [
+        "__biz",
+        "mid",
+        "idx",
+        "sn"
+      ],
+      "d": "PRO-2684"
+    },
+    {
+      "a": "微店",
+      "e": "k.youshop10.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "kirito"
+    },
+    {
+      "a": "小红书",
+      "e": "www.xiaohongshu.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "RtYkk"
+    },
+    {
+      "a": "YouTube一般链接",
+      "e": "www.youtube.com",
+      "f": 0,
+      "g": [
+        "v"
+      ],
+      "d": "Mosney"
+    },
+    {
+      "a": "YouTube分享短链",
+      "e": "youtu.be",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "Monsey "
+    },
+    {
+      "a": "知乎",
+      "e": "www.zhihu.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "知乎文章",
+      "e": "zhuanlan.zhihu.com",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "TCOTC"
+    },
+    {
+      "a": "作业帮",
+      "e": "plat-miniapp.zuoyebang.com",
+      "f": 0,
+      "g": [
+        "cuid",
+        "ishit"
+      ],
+      "d": "omg-xtao"
+    },
+    {
+      "a": "飞客",
+      "e": "www.flyert.com.cn",
+      "f": 0,
+      "g": [
+        ""
+      ],
+      "d": "pplulee"
+    }
+  ],
+  "regex": [
+    {
+      "a": "Amazon Japan",
+      "b": [
+        "amazon\\.co\\.jp/.*/dp",
+        "ref=.*"
+      ],
+      "c": [
+        "amazon.co.jp/dp",
+        ""
+      ],
+      "d": "MateChan"
+    },
+    {
+      "a": "哔哩哔哩视频分享",
+      "b": [
+        "(http|https)://(m|www)*.?bilibili.com/video",
+        "\\?.*"
+      ],
+      "c": [
+        "https://www.bilibili.com/video",
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "哔哩哔哩手机版动态分享",
+      "b": [
+        "m.bilibili.com/dynamic"
+      ],
+      "c": [
+        "t.bilibili.com"
+      ],
+      "d": "FTReey"
+    },
+    {
+      "a": "豆瓣",
+      "b": [
+        "_spm_id=.*"
+      ],
+      "c": [
+        ""
+      ],
+      "d": ""
+    },
+    {
+      "a": "E绅士表站全局（仅适用于捐赠用户）",
+      "b": [
+        "exhentai.org"
+      ],
+      "c": [
+        "e-hentai.org"
+      ],
+      "d": "ous50"
+    },
+    {
+      "a": "fanbox",
+      "b": [
+        ".fanbox.cc",
+        "\\?.*"
+      ],
+      "c": [
+        ".fanbox.cc",
+        ""
+      ],
+      "d": "omg-xtao"
+    },
+    {
+      "a": "华为应用市场详情页转下载链接",
+      "b": [
+        "appgallery.huawei.com/app",
+        "\\?.*"
+      ],
+      "c": [
+        "appgallery.cloud.huawei.com/appdl",
+        ""
+      ],
+      "d": "PianCat"
+    },
+    {
+      "a": "Instagram/Threads",
+      "b": [
+        "\\?igsh=.*",
+        "\\?igshid=.*"
+      ],
+      "c": [
+        "",
+        ""
+      ],
+      "d": "Zois, faizul726"
+    },
+    {
+      "a": "京东",
+      "b": [
+        "item.m.jd.com",
+        "\\?.*",
+        "product/"
+      ],
+      "c": [
+        "item.jd.com",
+        "",
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "酷安",
+      "b": [
+        "coolapk.com",
+        "\\?.*"
+      ],
+      "c": [
+        "coolapk1s.com",
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "拼多多多人团",
+      "b": [
+        "yangkeduo\\.com/pincard_ask.html\\?__rp_name=brand_amazing_price_group",
+        "https?://.+\\.yangkeduo\\.com/login\\.html\\?from=(https?://.+\\.yangkeduo\\.com/.+html\\?)",
+        "\\?.*?(.+?id=.+?)&(.+?=.+)*"
+      ],
+      "c": [
+        "yangkeduo.com/pincard_ask.html?__rp_name=brand_amazing_price_group",
+        "$1",
+        "?$1"
+      ],
+      "d": "Mosney"
+    },
+    {
+      "a": "Pixiv",
+      "b": [
+        "(www.)?pixiv.net/artworks/",
+        "$",
+        "#"
+      ],
+      "c": [
+        "pixiv.re/",
+        ".png",
+        "-"
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "Pixiv长链接缩短",
+      "b": [
+        "member_illust.php\\?mode=medium&illust_id="
+      ],
+      "c": [
+        "artworks/"
+      ],
+      "d": "FTReey"
+    },
+    {
+      "a": "Pixiv跳转到其他网站",
+      "b": [
+        "(https?://)(www\\.)?pixiv.net/jump.php\\?url="
+      ],
+      "c": [
+        ""
+      ],
+      "d": "FTReey"
+    },
+    {
+      "a": "QQ 空间分享链接",
+      "b": [
+        "https?:\\/\\/www\\.urlshare\\.cn\\/(.*&)?url=([^&]+).*"
+      ],
+      "c": [
+        "$2"
+      ],
+      "d": "PRO"
+    },
+    {
+      "a": "什么值得买",
+      "b": [
+        "(https://test.smzdm.com/p/\\d+)(\\?.*)|(https://.*\\.smzdm\\.com/.*/)(.*)"
+      ],
+      "c": [
+        "$1$3"
+      ],
+      "d": "HinataKato"
+    },
+    {
+      "a": "Twitter",
+      "b": [
+        "https?://(twitter|x).com",
+        "\\?.*"
+      ],
+      "c": [
+        "https://fxtwitter.com",
+        ""
+      ],
+      "d": "qrqr"
+    },
+    {
+      "a": "Twitter",
+      "b": [
+        "https?://(twitter|x).com",
+        "\\?.*"
+      ],
+      "c": [
+        "https://fixupx.com",
+        ""
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "Twitter UID链接优化",
+      "b": [
+        "twitter.com/i/user/"
+      ],
+      "c": [
+        "twitter.com/intent/user?user_id="
+      ],
+      "d": "FTReey"
+    },
+    {
+      "a": "Twitter 去跟踪",
+      "b": [
+        "(http|https)://(www.)?twitter.com",
+        "\\?.*"
+      ],
+      "c": [
+        "https://twitter.com",
+        ""
+      ],
+      "d": "FTReey"
+    },
+    {
+      "a": "微博轻享版分享链接转换",
+      "b": [
+        "share.api.weibo.cn",
+        "share/[^%]*(weibo_id=)"
+      ],
+      "c": [
+        "m.weibo.cn",
+        "status/"
+      ],
+      "d": "三泽"
+    },
+    {
+      "a": "移动端微博用户页分享链接",
+      "b": [
+        "m.weibo.cn/profile"
+      ],
+      "c": [
+        "weibo.com/u"
+      ],
+      "d": "FTReey"
+    },
+    {
+      "a": "移动端微博链接去跟踪",
+      "b": [
+        "http(s)?://m.weibo.cn",
+        "\\?.*"
+      ],
+      "c": [
+        "https://m.weibo.cn",
+        ""
+      ],
+      "d": ""
+    },
+    {
+      "a": "Netease Cloud Music",
+      "b": [
+        "https?://.*\\.?music\\.163\\.com.*(id=(\\d+)).*"
+      ],
+      "c": [
+        "https://music.163.com/song?id=$2"
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "小红书",
+      "b": [
+        "(http|https)(://xhslink.com\\w*)",
+        "(/.*)"
+      ],
+      "c": [
+        "https$2",
+        "$1 "
+      ],
+      "d": "lz233"
+    },
+    {
+      "a": "YouTube Mobile",
+      "b": [
+        "(http|https)://youtu.be/"
+      ],
+      "c": [
+        "https://youtube.com/watch\\?v="
+      ],
+      "d": "ous50"
+    },
+    {
+      "a": "YouTube NormalLink",
+      "b": [
+        "(https?://)(www\\.)?(youtube\\.com)(/watch\\?v=[a-zA-Z0-9_-]+)(\\?si=[A-Za-z0-9_-]+)"
+      ],
+      "c": [
+        "$1$2$3$4"
+      ],
+      "d": "HinataKato"
+    },
+    {
+      "a": "YouTube ShortLink",
+      "b": [
+        "(https?://)(www\\.)?(youtu\\.be)(/[A-Za-z0-9_-]+)(\\?si=[A-Za-z0-9_-]+)"
+      ],
+      "c": [
+        "$1$2$3$4"
+      ],
+      "d": "HinataKato"
+    },
+    {
+      "a": "知乎关怀版",
+      "b": [
+        "www.zhihu.com/question",
+        "\\?.*"
+      ],
+      "c": [
+        "www.zhihu.com/aria/question"
+      ],
+      "d": "BingoKingo"
+    }
+  ],
+  "redirect": [
+    {
+      "a": "哔哩哔哩",
+      "e": "b23.tv",
+      "h": "",
+      "d": "lz233"
+    },
+    {
+      "a": "哔哩哔哩",
+      "e": "bili2233.cn",
+      "h": "",
+      "d": "Zorroblanco"
+    },
+    {
+      "a": "Reddit",
+      "e": "www.reddit.com",
+      "h": "",
+      "d": "Dreista"
+    },
+    {
+      "a": "TikTok",
+      "e": "vm.tiktok.com",
+      "h": "",
+      "d": "Mattis"
+    },
+    {
+      "a": "Netease Cloud Music",
+      "e": "163cn.tv",
+      "h": "",
+      "d": "lz233"
+    }
+  ]
+}

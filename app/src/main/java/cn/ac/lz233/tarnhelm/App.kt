@@ -83,6 +83,7 @@ class App : Application() {
         redirectRuleDao = db.redirectRuleDao()
         extensionDao = db.extensionDao()
         ExtensionManager.init()
+        BundledContentSeeder.seedIfNeeded(context)
 
         activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
         clipboardManager = getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
