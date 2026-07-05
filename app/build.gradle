@@ -14,7 +14,7 @@ android {
         minSdk 27
         targetSdk 36
         versionCode = date.format("yyyyMMdd").toInteger()
-        versionName "1.8.5"
+        versionName "1.8.6"
 
         ksp {
             arg("room.schemaLocation", "$projectDir/schemas")
