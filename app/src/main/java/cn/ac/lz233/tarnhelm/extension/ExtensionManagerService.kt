@@ -71,7 +71,7 @@ class ExtensionManagerService(private val context: Context) {
 
     private fun createExtensionService(extensionRecord: ExtensionRecord) : ExtService {
         val extClassLoader = loadExtension(extensionRecord)
-        val entryClazz = ExtensionRecord.loadEntryClass(extClassLoader, extensionRecord.entryClassName)
+        val entryClazz = extClassLoader.loadClass(extensionRecord.entryClassName)
         val extObj = entryClazz.getDeclaredConstructor().newInstance() as ITarnhelmExt
         return createExtensionServiceMethod.invoke(extObj, object : ExtContext {
             private val ownSP = ExtensionOwnStorage(extensionRecord.getExtPath(context))

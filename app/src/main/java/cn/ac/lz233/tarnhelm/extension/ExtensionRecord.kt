@@ -35,28 +35,11 @@ data class ExtensionRecord(
     }
 
     companion object {
-        /** The conventional entry point class name authors must use (in the default package). */
         const val ENTRY_CLASS_NAME = "TarnhelmExt"
 
-        /**
-         * Load the entry class, with a temporary fallback for the previously-built example.dex
-         * that was compiled under the example package name. After the asset is regenerated
-         * from corrected sources this fallback can be removed.
-         */
-        fun loadEntryClass(cl: ClassLoader, name: String = ENTRY_CLASS_NAME): Class<*> {
-            return try {
-                cl.loadClass(name)
-            } catch (e: ClassNotFoundException) {
-                if (name == ENTRY_CLASS_NAME) {
-                    cl.loadClass("cn.ac.lz233.tarnhelm.ext.example.TarnhelmExt")
-                } else {
-                    throw e
-                }
-            }
-        }
-
-        fun fromExtInfo(extInfo: ExtInfo): ExtensionRecord {
+        fun fromExtInfo(extInfo: ExtInfo, entryClassName: String = ENTRY_CLASS_NAME): ExtensionRecord {
             return ExtensionRecord(
+                entryClassName = entryClassName,
                 id = extInfo.id(),
                 author = extInfo.author(),
                 name = extInfo.name(),

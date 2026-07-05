@@ -18,6 +18,8 @@ object ExtensionManager {
 
     private val mExtensionManagerService by lazy { ExtensionManagerService(App.context) }
 
+    private data class ExtensionEntry(val instance: ITarnhelmExt, val className: String)
+
     fun init() {
         mExtensionManagerService.init()
         Log.d("ExtensionManager", "Total installed extension: ${mExtensionManagerService.getInstalledExtensions().size}")
@@ -32,8 +34,9 @@ object ExtensionManager {
         val byteArrays = stream.readBytes()
         stream.close()
         val classLoader = MemoryDexLoader.createClassLoaderWithDex(byteArrays, mExtensionManagerService.extensionClassLoaderParent)
-        val extInfo = findExtensionInfo(classLoader)!!
-        Log.d("ExtensionManager", "Extension info found: $extInfo, extension id: ${extInfo.id()}")
+        val entry = findExtensionEntry(byteArrays, classLoader)
+        val extInfo = entry.instance.extensionInfo()
+        Log.d("ExtensionManager", "Extension info found: $extInfo, extension id: ${extInfo.id()}, entry: ${entry.className}")
 
         validateExtInfo(extInfo)
 
@@ -49,8 +52,34 @@ object ExtensionManager {
         extPath.parentFile?.mkdirs()
         extPath.writeBytes(byteArrays)
 
-        mExtensionManagerService.registerExtension(ExtensionRecord.fromExtInfo(extInfo))
+        mExtensionManagerService.registerExtension(ExtensionRecord.fromExtInfo(extInfo, entry.className))
         Log.d("ExtensionManager", "Extension (id:$extId) installed successfully")
+    }
+
+    private fun findExtensionEntry(dexBytes: ByteArray, classLoader: ClassLoader): ExtensionEntry {
+        val names = mutableListOf<String>()
+        val dexFile = MemoryDexLoader.createDexFileFormBytes(dexBytes, classLoader, null)
+        val entries = dexFile.entries()
+        while (entries.hasMoreElements()) {
+            val name = entries.nextElement()
+            if (name == ExtensionRecord.ENTRY_CLASS_NAME || name.endsWith(".${ExtensionRecord.ENTRY_CLASS_NAME}")) {
+                names.add(name)
+            }
+        }
+        if (names.isEmpty()) {
+            throw InvalidExtensionException("No TarnhelmExt class found in DEX")
+        }
+        for (name in names) {
+            try {
+                val clazz = classLoader.loadClass(name)
+                if (ITarnhelmExt::class.java.isAssignableFrom(clazz)) {
+                    val instance = clazz.getDeclaredConstructor().newInstance() as ITarnhelmExt
+                    return ExtensionEntry(instance, name)
+                }
+            } catch (_: Exception) {
+            }
+        }
+        throw InvalidExtensionException("TarnhelmExt class does not implement ITarnhelmExt")
     }
 
     private fun validateExtInfo(extInfo: ITarnhelmExt.ExtInfo) {
@@ -70,15 +99,6 @@ object ExtensionManager {
     fun toMD5(input: String): String {
         val md = MessageDigest.getInstance("MD5")
         return BigInteger(1, md.digest(input.toByteArray())).toString(16).padStart(32, '0')
-    }
-
-    private fun findExtensionInfo(classLoader: ClassLoader): ITarnhelmExt.ExtInfo? {
-        try {
-            val realEntry = ExtensionRecord.loadEntryClass(classLoader).getDeclaredConstructor().newInstance()
-            return (realEntry as ITarnhelmExt).extensionInfo()
-        } catch (e: Exception) {
-            throw InvalidExtensionException("Loading invalid extension", e)
-        }
     }
 
     @Throws(RuntimeException::class)
