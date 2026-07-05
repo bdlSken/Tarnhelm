@@ -57,15 +57,7 @@ object ExtensionManager {
     }
 
     private fun findExtensionEntry(dexBytes: ByteArray, classLoader: ClassLoader): ExtensionEntry {
-        val names = mutableListOf<String>()
-        val dexFile = MemoryDexLoader.createDexFileFormBytes(dexBytes, classLoader, null)
-        val entries = dexFile.entries()
-        while (entries.hasMoreElements()) {
-            val name = entries.nextElement()
-            if (name == ExtensionRecord.ENTRY_CLASS_NAME || name.endsWith(".${ExtensionRecord.ENTRY_CLASS_NAME}")) {
-                names.add(name)
-            }
-        }
+        val names = findTarnhelmExtClassNamesInDex(dexBytes)
         if (names.isEmpty()) {
             throw InvalidExtensionException("No TarnhelmExt class found in DEX")
         }
@@ -80,6 +72,36 @@ object ExtensionManager {
             }
         }
         throw InvalidExtensionException("TarnhelmExt class does not implement ITarnhelmExt")
+    }
+
+    /** ponytail: byte-scan DEX string pool; avoids DexFile APIs broken on API 35+ */
+    private fun findTarnhelmExtClassNamesInDex(dex: ByteArray): List<String> {
+        val suffix = ExtensionRecord.ENTRY_CLASS_NAME.encodeToByteArray()
+        val names = linkedSetOf<String>()
+        var i = 0
+        while (i <= dex.size - suffix.size) {
+            var matched = true
+            for (j in suffix.indices) {
+                if (dex[i + j] != suffix[j]) {
+                    matched = false
+                    break
+                }
+            }
+            if (!matched) {
+                i++
+                continue
+            }
+            var start = i
+            while (start > 0 && dex[start] != 'L'.code.toByte()) start--
+            var end = i + suffix.size - 1
+            while (end < dex.size && dex[end] != ';'.code.toByte()) end++
+            if (dex[start] == 'L'.code.toByte() && end < dex.size && dex[end] == ';'.code.toByte()) {
+                val internal = String(dex, start + 1, end - start - 1)
+                names.add(internal.replace('/', '.'))
+            }
+            i++
+        }
+        return names.toList()
     }
 
     private fun validateExtInfo(extInfo: ITarnhelmExt.ExtInfo) {

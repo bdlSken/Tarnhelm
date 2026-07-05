@@ -49,11 +49,15 @@ object BundledContentSeeder {
 
     private fun seedExtensionsIfEmpty(context: Context) {
         if (ExtensionManager.getInstalledExtensions().isNotEmpty()) return
-        runBlocking {
-            context.assets.open("extensions/example.dex").use { stream ->
-                ExtensionManager.installExtension(stream)
+        runCatching {
+            runBlocking {
+                context.assets.open("extensions/example.dex").use { stream ->
+                    ExtensionManager.installExtension(stream)
+                }
             }
+            Log.i(TAG, "Installed bundled sample extension")
+        }.onFailure { t ->
+            Log.e(TAG, "Bundled extension install failed; app will continue", t)
         }
-        Log.i(TAG, "Installed bundled sample extension")
     }
 }
