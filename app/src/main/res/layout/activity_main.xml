@@ -213,7 +213,7 @@
                 android:layout_marginStart="25dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="25dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="?attr/colorSurfaceBright"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="0dp"
@@ -257,6 +257,40 @@
 
                 </RelativeLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/historyTitleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="5dp"
+                android:drawableStart="@drawable/ic_history"
+                android:drawablePadding="12dp"
+                android:gravity="center_vertical"
+                android:text="@string/mainHistoryTitle"
+                android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+                android:textColor="?attr/colorOnSurface" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/historyEmptyTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="25dp"
+                android:layout_marginEnd="25dp"
+                android:layout_marginBottom="10dp"
+                android:text="@string/historyEmpty"
+                android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+                android:textColor="?attr/colorOnSurfaceVariant"
+                android:visibility="gone" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/historyRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/settingsCardView"

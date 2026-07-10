@@ -25,6 +25,7 @@ import cn.ac.lz233.tarnhelm.logic.dao.ExtensionDao
 import cn.ac.lz233.tarnhelm.logic.dao.ParameterRuleDao
 import cn.ac.lz233.tarnhelm.logic.dao.RedirectRuleDao
 import cn.ac.lz233.tarnhelm.logic.dao.RegexRuleDao
+import cn.ac.lz233.tarnhelm.logic.dao.SanitizationHistoryDao
 import cn.ac.lz233.tarnhelm.logic.dao.SettingsDao
 import cn.ac.lz233.tarnhelm.ui.extensions.ExtensionsActivity
 import cn.ac.lz233.tarnhelm.ui.main.MainActivity
@@ -48,6 +49,7 @@ class App : Application() {
         lateinit var regexRuleDao: RegexRuleDao
         lateinit var redirectRuleDao: RedirectRuleDao
         lateinit var extensionDao: ExtensionDao
+        lateinit var sanitizationHistoryDao: SanitizationHistoryDao
 
         lateinit var activityManager: ActivityManager
         lateinit var clipboardManager: ClipboardManager
@@ -82,6 +84,7 @@ class App : Application() {
         regexRuleDao = db.regexRuleDao()
         redirectRuleDao = db.redirectRuleDao()
         extensionDao = db.extensionDao()
+        sanitizationHistoryDao = db.sanitizationHistoryDao()
         ExtensionManager.init()
         BundledContentSeeder.seedIfNeeded(context)
 

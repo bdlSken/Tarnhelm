@@ -9,6 +9,7 @@ import androidx.core.text.HtmlCompat
 import cn.ac.lz233.tarnhelm.App
 import cn.ac.lz233.tarnhelm.R
 import cn.ac.lz233.tarnhelm.extension.ExtensionManager
+import cn.ac.lz233.tarnhelm.logic.SanitizationHistory
 import cn.ac.lz233.tarnhelm.logic.dao.SettingsDao
 import cn.ac.lz233.tarnhelm.util.LogUtil
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
@@ -38,11 +39,13 @@ fun String.toJSONArray() = JSONArray().apply {
     }
 }
 
-fun String.doTarnhelm(): Triple<CharSequence, Boolean, List<String>> {
+fun String.doTarnhelm(): TarnhelmUrlResult {
     LogUtil._d("Original URL: $this")
     var result = this
     var hasTimeConsumingOperation = false
     val targetRules = mutableListOf<String>()
+    val removedParameters = mutableSetOf<String>()
+    val originalQueryParams = result.toHttpUrlOrNull()?.queryParameterNames?.toSet() ?: emptySet()
     var httpUrl = result.toHttpUrlOrNull()
     LogUtil._d("HTTP URL: $httpUrl")
     if (httpUrl != null) {
@@ -83,10 +86,12 @@ fun String.doTarnhelm(): Triple<CharSequence, Boolean, List<String>> {
                     var httpUrlBuilder = this.newBuilder()
                     when (rule.mode) {
                         0 -> aloneParameterNames.forEach {
+                            removedParameters.add(it)
                             httpUrlBuilder = httpUrlBuilder.removeAllQueryParameters(it)
                         }
 
                         1 -> overlapParameterNames.forEach {
+                            removedParameters.add(it)
                             httpUrlBuilder = httpUrlBuilder.removeAllQueryParameters(it)
                         }
                     }
@@ -124,9 +129,13 @@ fun String.doTarnhelm(): Triple<CharSequence, Boolean, List<String>> {
         targetRules.addAll(extNames.map { "[${R.string.extensionsTitle.getString()}]$it" })
         result = extResult
     }
+    result.toHttpUrlOrNull()?.queryParameterNames?.let { finalParams ->
+        removedParameters.addAll(originalQueryParams - finalParams)
+    }
     LogUtil._d("Result: $result")
     LogUtil._d("TargetRules: $targetRules")
-    return Triple(result, hasTimeConsumingOperation, targetRules)
+    LogUtil._d("RemovedParameters: $removedParameters")
+    return TarnhelmUrlResult(result, hasTimeConsumingOperation, targetRules, removedParameters.sorted())
 }
 
 @SuppressLint("RestrictedApi")
@@ -140,10 +149,15 @@ fun CharSequence.doTarnhelms(): Triple<CharSequence, Boolean, List<List<String>>
             // PatternsCompat.AUTOLINK_WEB_URL.toRegex() cannot recognize some irregular sharing texts
             // 73 xx发布了一篇小红书笔记，快来看吧！ 😆 xxxxxxxxxxxxx 😆 http://xhslink.com/xxxxxx，复制本条信息，打开【小红书】App查看精彩内容！
             .replace(this) {
-                val result = it.value.doTarnhelm()
-                if (result.second) hasTimeConsumingOperation = true
-                targetRules.add(result.third)
-                result.first
+                val original = it.value
+                val result = original.doTarnhelm()
+                if (result.hasTimeConsumingOperation) hasTimeConsumingOperation = true
+                targetRules.add(result.appliedRules)
+                val cleaned = result.cleaned.toString()
+                if (cleaned != original) {
+                    SanitizationHistory.record(original, cleaned, result.removedParameters, result.appliedRules)
+                }
+                result.cleaned
             }
     return Triple(methodResult, hasTimeConsumingOperation, targetRules)
 }

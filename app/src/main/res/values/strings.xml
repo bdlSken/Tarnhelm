@@ -28,6 +28,12 @@
     <string name="mainRulesSummary">%s rule(s) recorded</string>
     <string name="mainExtensionsTitle">Extensions</string>
     <string name="mainExtensionsSummary">%s extension(s) recorded</string>
+    <string name="mainHistoryTitle">History</string>
+    <string name="historyEmpty">No sanitized links yet.</string>
+    <string name="historyItemOriginal">Original</string>
+    <string name="historyItemCleaned">Cleaned</string>
+    <string name="historyItemRemovedParameters">Removed parameters</string>
+    <string name="historyItemNoParametersRemoved">None (URL changed by redirect or regex rules)</string>
     <string name="mainSettingsTitle">Settings</string>
     <string name="mainShareTitle">Share</string>
     <string name="mainAboutTitle">About</string>

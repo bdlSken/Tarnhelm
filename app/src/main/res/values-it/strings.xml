@@ -1,0 +1,8 @@
+<resources>
+    <string name="mainHistoryTitle">Cronologia</string>
+    <string name="historyEmpty">Nessun link sanificato.</string>
+    <string name="historyItemOriginal">Originale</string>
+    <string name="historyItemCleaned">Sanificato</string>
+    <string name="historyItemRemovedParameters">Parametri rimossi</string>
+    <string name="historyItemNoParametersRemoved">Nessuno (URL modificato da redirect o regex)</string>
+</resources>

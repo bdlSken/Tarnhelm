@@ -611,9 +611,28 @@
         "\\?.*"
       ],
       "c": [
-        "www.zhihu.com/aria/question"
+        "www.zhihu.com/aria/question",
+        ""
       ],
       "d": "BingoKingo"
+    },
+    {
+      "a": "Global Tracking Parameters",
+      "b": [
+        "([?&])(?:utm_[^=&#]+|fbclid|gclid|gclsrc|dclid|gbraid|wbraid|msclkid|mc_eid|mc_cid|mkt_tok|igshid|igsh|yclid|twclid|ttclid|spm|scm|_ga|vero_id|_hsenc|_hsmi|__hssc|__hstc|__hsfp|oly_anon_id|oly_enc_id)=[^&#]*",
+        "\\?&+",
+        "&&+",
+        "[?&]+#",
+        "[?&]+$"
+      ],
+      "c": [
+        "$1",
+        "?",
+        "&",
+        "#",
+        ""
+      ],
+      "d": "Tarnhelm"
     }
   ],
   "redirect": [

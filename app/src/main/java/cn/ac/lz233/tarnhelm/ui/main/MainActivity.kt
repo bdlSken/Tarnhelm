@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.view.View
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 import cn.ac.lz233.tarnhelm.App
 import cn.ac.lz233.tarnhelm.BuildConfig
 import cn.ac.lz233.tarnhelm.R
@@ -36,6 +37,7 @@ import kotlin.system.exitProcess
 class MainActivity : BaseActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private lateinit var historyAdapter: SanitizationHistoryAdapter
     private val workModeList: List<String>
         get() = mutableListOf<String>().apply {
             if (App.isEditTextMenuActive()) add(R.string.mainStatusWorkModeEditTextMenu.getString())
@@ -51,6 +53,10 @@ class MainActivity : BaseActivity() {
         setSupportActionBar(toolbar)
 
         init()
+
+        historyAdapter = SanitizationHistoryAdapter(emptyList())
+        binding.historyRecyclerView.layoutManager = LinearLayoutManager(this)
+        binding.historyRecyclerView.adapter = historyAdapter
 
         binding.rulesCardView.setOnClickListener { RulesActivity.actionStart(this) }
         binding.extensionsCardView.setOnClickListener { ExtensionsActivity.actionStart(this) }
@@ -96,8 +102,18 @@ class MainActivity : BaseActivity() {
             }
             binding.rulesSummaryTextView.text = getString(R.string.mainRulesSummary, (App.regexRuleDao.getCount() + App.parameterRuleDao.getCount() + App.redirectRuleDao.getCount()).toString())
             binding.extensionsSummaryTextView.text = getString(R.string.mainExtensionsSummary, ExtensionManager.getInstalledExtensions().size.toString())
+            refreshHistory()
         }
         if (SettingsDao.workModeBackgroundMonitoring) startForegroundService(Intent(App.context, ClipboardService::class.java))
+    }
+
+    private fun refreshHistory() {
+        val entries = App.sanitizationHistoryDao.getAll()
+        val empty = entries.isEmpty()
+        binding.historyEmptyTextView.visibility = if (empty) View.VISIBLE else View.GONE
+        binding.historyRecyclerView.visibility = if (empty) View.GONE else View.VISIBLE
+        historyAdapter = SanitizationHistoryAdapter(entries)
+        binding.historyRecyclerView.adapter = historyAdapter
     }
 
     private fun init() {
